@@ -1,16 +1,16 @@
-<nav class="site-nav">
-  <div class="nav-inner container">
-    <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+<header class="site-header">
+  <div class="nav-container">
+    <a class="brand" href="{{ '/' | relative_url }}">My Personal Website</a>
 
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-
-    <ul class="nav-list">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-      <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
-      <li><a href="{{ '/skills/' | relative_url }}">Skills</a></li>
-      <li><a href="{{ '/experience/' | relative_url }}">Experience</a></li>
-      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-    </ul>
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/about' | relative_url }}">About</a></li>
+        <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
+        <li><a href="{{ '/skills' | relative_url }}">Skills</a></li>
+        <li><a href="{{ '/experience' | relative_url }}">Experience</a></li>
+        <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-</nav>
+</header>

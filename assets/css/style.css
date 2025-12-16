@@ -1,41 +1,157 @@
-:root{
-  --bg: #ffffff;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --max-width: 1000px;
+/* ========== GLOBAL ========== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: #111;
+  background: #fff;
 }
 
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; background:var(--bg); color:#111}
-.container{max-width:var(--max-width);margin:0 auto;padding:1rem}
-
-.site-nav{background:#f8fafc;border-bottom:1px solid #e6eef9}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:700;text-decoration:none;color:var(--accent)}
-.nav-list{list-style:none;display:flex;gap:1rem;margin:0;padding:0}
-.nav-list a{text-decoration:none;color:inherit;padding:.5rem .25rem;border-radius:4px}
-.nav-list a:hover{background:#eff6ff}
-.nav-toggle{display:none;background:transparent;border:0;font-size:1.25rem}
-
-.page-header{padding:1rem 0 0.5rem}
-.page-title{margin:.25rem 0}
-.page-content{padding-bottom:2rem}
-
-.site-footer{border-top:1px solid #e6eef9;background:#f8fafc;padding:.75rem 0;margin-top:2rem}
-.footer-inner{display:flex;justify-content:center;color:var(--muted)}
-.footer-content{text-align:center}
-.footer-content p{margin:0 0 .5rem}
-.github-link{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--accent);padding:.5rem .75rem;border-radius:6px;transition:background .2s}
-.github-link:hover{background:#eff6ff}
-.github-icon{width:20px;height:20px}
-
-/* Responsive */
-@media (max-width: 720px){
-  .nav-list{display:none;flex-direction:column;background:#fff;position:absolute;right:1rem;top:56px;box-shadow:0 6px 18px rgba(20,20,40,.06);padding:.5rem;border-radius:8px}
-  .nav-toggle{display:block}
-  .nav-list.show{display:flex}
-  .container{padding:1rem}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Simple utility */
-.muted{color:var(--muted)}
+/* ========== NAVBAR (logo left, links right) ========== */
+.site-header {
+  background: #f8fbff;
+  border-bottom: 1px solid #e9eef5;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* həm .brand (mənim verdiyim nav.html üçün),
+   həm də .logo (sənin əvvəlki kodların üçün) */
+.brand,
+.logo a {
+  font-weight: 700;
+  text-decoration: none;
+  color: #1a4bff;
+}
+
+.nav-links {
+  list-style: none;   /* ✅ bullet 100% yox olur */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+}
+
+.nav-links a:hover { text-decoration: underline; }
+
+/* ========== HOME HERO (solda text, sağda şəkil) ========== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 4rem 0;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 620px;
+}
+
+.hero-text h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2.4rem;
+}
+
+.hero-text p {
+  margin: 0;
+  color: #444;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.hero-photo-wrap { flex: 0 0 auto; }
+
+.hero-photo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #eee;
+}
+
+/* ========== FOOTER (GitHub Repository səliqəli) ========== */
+.site-footer {
+  border-top: 1px solid #e9eef5;
+  background: #f8fbff;
+  padding: 18px 0;
+  margin-top: 48px;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.footer-copy {
+  margin: 0 0 10px;
+  color: #556;
+  font-size: 14px;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1a4bff;
+  font-weight: 600;
+}
+
+.footer-link i { font-size: 18px; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand, .logo a {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2.5rem 0;
+  }
+
+  .hero-text h1 { font-size: 2rem; }
+
+  .hero-photo {
+    width: 150px;
+    height: 150px;
+  }
+}
