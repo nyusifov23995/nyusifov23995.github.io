@@ -23,6 +23,11 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neu
 
 .site-footer{border-top:1px solid #e6eef9;background:#f8fafc;padding:.75rem 0;margin-top:2rem}
 .footer-inner{display:flex;justify-content:center;color:var(--muted)}
+.footer-content{text-align:center}
+.footer-content p{margin:0 0 .5rem}
+.github-link{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--accent);padding:.5rem .75rem;border-radius:6px;transition:background .2s}
+.github-link:hover{background:#eff6ff}
+.github-icon{width:20px;height:20px}
 
 /* Responsive */
 @media (max-width: 720px){

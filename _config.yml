@@ -1,7 +1,7 @@
 title: "My Personal Website"
 description: "Personal website built with Jekyll"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+baseurl: "" # Root domain
+url: "https://nyusifov23995.github.io" # GitHub Pages URL
 
 permalink: /:title/
 markdown: kramdown
