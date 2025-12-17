@@ -1,12 +1,20 @@
-document.addEventListener('DOMContentLoaded', function(){
-  var btn = document.querySelector('.nav-toggle');
-  var nav = document.querySelector('.nav-list');
-  if(!btn || !nav) return;
-  btn.addEventListener('click', function(){
-    nav.classList.toggle('show');
-  });
+/* ===============================
+   Mobile nav toggle (optional)
+   =============================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".nav-links");
+
+  if (btn && nav) {
+    btn.addEventListener("click", () => {
+      nav.classList.toggle("show");
+    });
+  }
 });
-// Contact form -> opens mail client (works on GitHub Pages)
+
+/* ===============================
+   Contact form -> mailto (GitHub Pages compatible)
+   =============================== */
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   if (!form) return;
@@ -19,13 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.getElementById("message").value.trim();
 
     const to = "nurlan.datapath@gmail.com";
+
     const body =
       `From: ${fromEmail}\n\n` +
       `${message}\n\n` +
       `Phone: +994 55 265 17 01\n` +
       `WhatsApp: https://wa.me/994552651701`;
 
-    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto =
+      `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     window.location.href = mailto;
   });
 });
