@@ -155,3 +155,149 @@ body {
     height: 150px;
   }
 }
+/* =========================
+   ABOUT (Header + Timeline)
+========================= */
+
+.about-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
+}
+
+.about-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 2.2rem;
+}
+
+.about-title {
+  margin: 0 0 0.75rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.about-lead {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #444;
+}
+
+/* Timeline line */
+.timeline {
+  position: relative;
+  margin-top: 1rem;
+  padding-left: 2.2rem; /* space for line + dots */
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.95rem;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 2px;
+  background: #e9e9ee;
+}
+
+/* Item */
+.t-item {
+  position: relative;
+  margin-bottom: 1.4rem;
+}
+
+/* Dot */
+.t-dot {
+  position: absolute;
+  left: 0.62rem;
+  top: 1.15rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #111;
+  outline: 4px solid #fff;
+  box-shadow: 0 0 0 1px #e9e9ee;
+}
+
+/* Card */
+.t-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 1.2rem 1.25rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.t-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.55rem;
+}
+
+.t-top h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.t-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #e8e8e8;
+  background: #f7f7f9;
+  font-size: 0.85rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.t-card p {
+  margin: 0.6rem 0;
+  line-height: 1.8;
+  color: #333;
+}
+
+.t-list {
+  margin: 0.6rem 0 0.3rem 1.2rem;
+  padding: 0;
+}
+
+.t-note {
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-wrap {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .about-title {
+    font-size: 2.05rem;
+  }
+
+  .timeline {
+    padding-left: 1.6rem;
+  }
+
+  .timeline::before {
+    left: 0.65rem;
+  }
+
+  .t-dot {
+    left: 0.35rem;
+    top: 1.05rem;
+  }
+
+  .t-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+}
