@@ -22,7 +22,14 @@
 
     {% include footer.html %}
 
-    <!-- ✅ JS burada çağırılır -->
+    <!-- Lightbox Modal (HTML əvvəl olmalıdır) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="Close">✕</button>
+      <div class="lightbox-backdrop"></div>
+      <img class="lightbox-img" alt="">
+    </div>
+
+    <!-- JS həmişə ən sonda -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
   </body>
 </html>

@@ -40,3 +40,44 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = mailto;
   });
 });
+// ===== Lightbox =====
+(function () {
+  const box = document.getElementById("lightbox");
+  if (!box) return;
+
+  const imgEl = box.querySelector(".lightbox-img");
+  const closeBtn = box.querySelector(".lightbox-close");
+  const backdrop = box.querySelector(".lightbox-backdrop");
+
+  function openLightbox(src, alt) {
+    imgEl.src = src;
+    imgEl.alt = alt || "";
+    box.classList.add("is-open");
+    box.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    box.classList.remove("is-open");
+    box.setAttribute("aria-hidden", "true");
+    imgEl.src = "";
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    // only gallery images
+    if (target.matches(".project-gallery img")) {
+      openLightbox(target.src, target.alt);
+    }
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  backdrop.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+})();
