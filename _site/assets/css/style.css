@@ -1301,6 +1301,80 @@ html { scroll-behavior: smooth; }
   --navBorder: rgba(11,18,32,.10);
 }
 
+/* ==============================
+   Card / Block border system
+   - unified subtle gradient border for a premium look
+   - adapts to light/dark via prefers-color-scheme
+   ============================== */
+:root{
+  --card-border-start: rgba(37,99,235,0.14);
+  --card-border-end: rgba(6,182,212,0.09);
+  --card-inner-light: rgba(255,255,255,0.86);
+  --card-inner-dark: rgba(10,16,28,0.72);
+  --card-border-width: 1px;
+  --card-hover-shadow: 0 18px 48px rgba(37,99,235,0.06);
+  --card-elev-shadow: 0 12px 30px rgba(11,18,32,0.06);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --card-border-start: rgba(124,197,255,0.12);
+    --card-border-end: rgba(59,224,196,0.06);
+    --card-inner-light: rgba(255,255,255,0.03);
+    --card-inner-dark: rgba(8,12,20,0.72);
+    --card-hover-shadow: 0 20px 60px rgba(124,197,255,0.04);
+    --card-elev-shadow: 0 18px 50px rgba(2,6,23,0.18);
+  }
+}
+
+/* Apply the premium border & subtle hover to most blocks/cards */
+.card,
+.contact-card,
+.stat-card,
+.zz-card,
+.t-card,
+.skill-card,
+.chip,
+.project-card,
+.card-top + .card-text,
+.card {
+  border-radius: var(--card-radius,14px);
+  border: var(--card-border-width) solid transparent;
+  background-image: linear-gradient(var(--card-inner-light), var(--card-inner-light)), linear-gradient(90deg, var(--card-border-start), var(--card-border-end));
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: var(--card-elev-shadow);
+  transition: box-shadow .22s ease, transform .18s ease, opacity .12s ease;
+}
+
+/* Hover: subtle lift + glow */
+.card:hover,
+.contact-card:hover,
+.stat-card:hover,
+.zz-card:hover,
+.t-card:hover,
+.skill-card:hover,
+.chip:hover,
+.project-card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+/* Ensure inner backgrounds for dark contexts look proper */
+@media (prefers-color-scheme: dark){
+  .card,
+  .contact-card,
+  .stat-card,
+  .zz-card,
+  .t-card,
+  .skill-card,
+  .chip,
+  .project-card{
+    background-image: linear-gradient(var(--card-inner-light), var(--card-inner-light)), linear-gradient(90deg, var(--card-border-start), var(--card-border-end));
+  }
+}
+
+
 /* Additional dark-theme variable block removed */
 
 /* ---------- GLOBAL OVERRIDE ---------- */
