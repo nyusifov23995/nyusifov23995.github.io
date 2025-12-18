@@ -1278,26 +1278,6 @@ html, body {
 }
 
 html { scroll-behavior: smooth; }
-
-.snap-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
-}
-
-.snap-section {
-  /* allow sections to grow if their content is taller than the viewport
-     (prevents timeline/content overlapping). Use min-height so short
-     sections still fill the screen while taller sections expand naturally) */
-  min-height: calc(100vh - var(--header-height));
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  box-sizing: border-box;
-  padding: 40px 0; /* breathing room around content */
-  overflow: visible;
-}
 /* =====================================================
    NEW DESIGN SYSTEM (OVERRIDES OLD CSS)
    Dark / Light + New Navbar + Hero
