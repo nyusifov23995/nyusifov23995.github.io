@@ -1,39 +1,19 @@
-<header class="site-header">
-  <div class="nav-container">
+<nav class="nav">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <span class="avatar" aria-hidden="true">🟢 NY</span>
+    <span class="brand-name">Nurlan Yusifov</span>
+  </a>
 
-    <!-- Brand -->
-    <a class="brand" href="{{ '/' | relative_url }}">My Personal Website</a>
-
-    <!-- Mobile toggle (main.js bunu gözləyir) -->
-    <button class="nav-toggle" type="button" aria-label="Toggle menu">
-      ☰
-    </button>
-
-    <!-- Search -->
-    <form class="nav-search" action="{{ '/search/' | relative_url }}" method="get" role="search" aria-label="Site search">
-      <label class="sr-only" for="q">Search</label>
-      <span class="nav-search-icon" aria-hidden="true">🔎</span>
-      <input
-        id="q"
-        name="q"
-        class="nav-search-input"
-        type="search"
-        placeholder="Search pages…"
-        autocomplete="off"
-      />
-    </form>
-
-    <!-- Nav (main.js üçün nav-list lazımdır) -->
-    <nav class="site-nav" aria-label="Main navigation">
-      <ul class="nav-links nav-list">
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li><a href="{{ '/about' | relative_url }}">About</a></li>
-        <li><a href="{{ '/projects' | relative_url }}">Projects</a></li>
-        <li><a href="{{ '/skills' | relative_url }}">Skills</a></li>
-        <li><a href="{{ '/experience' | relative_url }}">Experience</a></li>
-        <li><a href="{{ '/contact' | relative_url }}">Contact</a></li>
-      </ul>
-    </nav>
-
+  <div class="nav-center">
+    <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+    <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+    <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+    <a class="nav-link {% if page.url contains '/skills' %}active{% endif %}" href="{{ '/skills/' | relative_url }}">Skills</a>
+    <a class="nav-link {% if page.url contains '/experience' %}active{% endif %}" href="{{ '/experience/' | relative_url }}">Experience</a>
+    <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" href="{{ '/contact/' | relative_url }}">Contact</a>
   </div>
-</header>
+
+  <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+    🌙
+  </button>
+</nav>

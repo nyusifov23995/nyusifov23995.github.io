@@ -1186,3 +1186,542 @@ body {
 .project-gallery--three img {
   height: 140px;
 }
+/* =========================
+   ABOUT – ZIGZAG TIMELINE
+========================= */
+
+.zz-timeline{
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 0 0;
+}
+
+/* middle line (desktop) */
+.zz-timeline::before{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.10);
+  border-radius: 999px;
+}
+
+.zz-item{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1.2rem 0;
+}
+
+/* card */
+.zz-card{
+  width: min(520px, 92%);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 18px;
+  padding: 1.15rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+/* place left/right */
+.zz-item.left  .zz-card{ grid-column: 1; justify-self: end; }
+.zz-item.right .zz-card{ grid-column: 2; justify-self: start; }
+
+/* dot */
+.zz-dot{
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid rgba(0,0,0,0.30);
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.95);
+}
+
+/* inside card */
+.zz-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: .8rem;
+  margin-bottom: .55rem;
+}
+
+.zz-top h2{
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.zz-badge{
+  display:inline-flex;
+  align-items:center;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+  border: 1px solid #e8e8e8;
+  background: #f7f7f9;
+  font-size: .85rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.zz-card p{
+  margin: .6rem 0;
+  line-height: 1.75;
+  color: #333;
+}
+
+.zz-list{
+  margin: .55rem 0 .35rem 1.15rem;
+  padding: 0;
+  line-height: 1.75;
+  color:#333;
+}
+
+.zz-note{
+  color:#555;
+  margin-top: .45rem;
+}
+
+/* MOBILE: single column */
+@media (max-width: 900px){
+  .zz-timeline::before{
+    left: 18px;
+    transform: none;
+  }
+
+  .zz-item{
+    grid-template-columns: 1fr;
+    padding-left: 46px;
+  }
+
+  .zz-dot{
+    left: 18px;
+    transform: none;
+  }
+
+  .zz-card{
+    width: 100%;
+  }
+
+  .zz-item.left  .zz-card,
+  .zz-item.right .zz-card{
+    grid-column: 1;
+    justify-self: start;
+  }
+}
+/* ===== Full-page scroll (Scroll Snap) ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+/* =====================================================
+   NEW DESIGN SYSTEM (OVERRIDES OLD CSS)
+   Dark / Light + New Navbar + Hero
+===================================================== */
+
+/* ---------- THEME TOKENS ---------- */
+:root{
+  --bg: #f6f8fc;
+  --text: #0b1220;
+  --muted: rgba(11,18,32,.75);
+  --card: rgba(255,255,255,.75);
+  --border: rgba(11,18,32,.10);
+  --shadow: 0 20px 60px rgba(0,0,0,.08);
+
+  --accent: #22c55e;
+  --accent2: #38bdf8;
+  --accent3: #6366f1;
+
+  --nav: rgba(255,255,255,.70);
+  --navBorder: rgba(11,18,32,.10);
+}
+
+html[data-theme="dark"]{
+  --bg: #07101d;
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --card: rgba(10,16,28,.72);
+  --border: rgba(255,255,255,.10);
+  --shadow: 0 25px 70px rgba(0,0,0,.35);
+
+  --nav: rgba(20,30,45,.55);
+  --navBorder: rgba(255,255,255,.08);
+}
+
+/* ---------- GLOBAL OVERRIDE ---------- */
+body{
+  background:
+    radial-gradient(900px 500px at 15% 15%, rgba(34,197,94,.10), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(99,102,241,.10), transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* ---------- NAVBAR (NEW) ---------- */
+.nav{
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  max-width: 1180px;
+  margin: 12px auto;
+  padding: 10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background: var(--nav);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--navBorder);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.nav-center{
+  display:flex;
+  gap:6px;
+  padding:6px;
+  border-radius:999px;
+  background: rgba(255,255,255,.06);
+}
+
+.nav-link{
+  padding:10px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  color: var(--muted);
+}
+
+.nav-link:hover{
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+}
+
+.nav-link.active{
+  background: rgba(34,197,94,.22);
+  color: var(--text);
+  box-shadow: 0 10px 30px rgba(34,197,94,.18);
+}
+
+.theme-toggle{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:1px solid var(--navBorder);
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+  cursor:pointer;
+}
+
+/* ---------- HERO (NEW CARD STYLE) ---------- */
+.hero{
+  max-width:1180px;
+  margin:28px auto;
+  padding:56px;
+  border-radius:28px;
+  border:1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:48px;
+}
+
+.hero-text p{
+  color: var(--muted);
+}
+
+.chips .chip{
+  background: rgba(255,255,255,.08);
+  border:1px solid var(--border);
+}
+
+/* ---------- PROFILE RING ---------- */
+.hero-photo-wrap{
+  padding:10px;
+  border-radius:999px;
+  background: conic-gradient(from 180deg,
+    var(--accent),
+    var(--accent2),
+    var(--accent3),
+    var(--accent)
+  );
+}
+
+.hero-photo{
+  border-radius:999px;
+  border:10px solid rgba(10,16,28,.85);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px){
+  .hero{
+    flex-direction:column-reverse;
+    text-align:center;
+    padding:36px 18px;
+  }
+}
+/* ===============================
+   GLOBAL PAGE STYLES (all pages)
+================================ */
+.page{
+  max-width: 1180px;
+  margin: 18px auto;
+  padding: 0;
+}
+
+.page-card{
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  border-radius: 22px;
+  padding: 28px;
+}
+
+.page h1, .page h2, .page h3{
+  color: var(--text);
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+
+.page p{
+  color: var(--muted);
+  margin: 0 0 14px;
+  line-height: 1.8;
+}
+
+.page a{
+  color: rgba(34,197,94,.95);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.page a:hover{
+  text-decoration: underline;
+}
+
+.divider{
+  height: 1px;
+  background: var(--border);
+  margin: 18px 0;
+}
+
+/* ===============================
+   SECTION TITLES
+================================ */
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.section-title .kicker{
+  font-size: 12px;
+  letter-spacing: .22em;
+  font-weight: 900;
+  color: rgba(34,197,94,.90);
+}
+
+/* ===============================
+   GRID + CARDS (projects, skills, exp)
+================================ */
+.grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card{
+  grid-column: span 6;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 18px 55px rgba(0,0,0,.15);
+}
+
+html[data-theme="light"] .card{
+  border-color: var(--border);
+  background: rgba(255,255,255,.60);
+}
+
+.card h3{
+  margin: 0 0 8px;
+}
+
+.badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.badge{
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  font-size: 12px;
+  color: var(--text);
+}
+
+html[data-theme="light"] .badge{
+  border-color: var(--border);
+  background: rgba(255,255,255,.60);
+}
+
+/* ===============================
+   LISTS
+================================ */
+.page ul{
+  margin: 0 0 14px;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.page li{
+  margin: 8px 0;
+}
+
+/* ===============================
+   CONTACT (simple form look)
+================================ */
+.form{
+  display:flex;
+  flex-direction:column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.input, .textarea{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: var(--text);
+  outline: none;
+}
+
+html[data-theme="light"] .input,
+html[data-theme="light"] .textarea{
+  border-color: var(--border);
+  background: rgba(255,255,255,.75);
+}
+
+.textarea{
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit{
+  align-self:flex-start;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(34,197,94,.35);
+  background: rgba(34,197,94,.22);
+  color: var(--text);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 18px 55px rgba(34,197,94,.22);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px){
+  .page-card{ padding: 18px; }
+  .card{ grid-column: span 12; }
+  .submit{ width: 100%; text-align:center; }
+}
+/* FIX: make chips + buttons look like screenshot #2 */
+.hero .chips{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:10px !important;
+}
+
+.hero .chip{
+  display:inline-flex !important;
+  width:auto !important;
+  padding:8px 12px !important;
+  border-radius:999px !important;
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  font-size:13px !important;
+  color: var(--text) !important;
+  box-shadow:none !important;
+}
+
+.hero .hero-actions{
+  display:flex !important;
+  gap:14px !important;
+  margin-top:22px !important;
+}
+
+.hero .btn-pill{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:auto !important;
+  padding:12px 18px !important;
+  border-radius:999px !important;
+  text-decoration:none !important;
+}
+/* FINAL FIX: CTA links -> real buttons */
+.hero .hero-actions a{
+  text-decoration: none !important;
+  color: var(--text) !important;
+}
+
+.hero .hero-actions a:hover{
+  text-decoration: none !important;
+}
+/* ===== Experience: dark mode readability fix ===== */
+html[data-theme="dark"] .page-wrap .card{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+
+html[data-theme="dark"] .page-wrap .card-title{
+  color: rgba(255,255,255,.92) !important;
+}
+
+html[data-theme="dark"] .page-wrap .card-text,
+html[data-theme="dark"] .page-wrap .page-lead{
+  color: rgba(255,255,255,.72) !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+html[data-theme="dark"] .page-wrap .badge{
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.85) !important;
+}

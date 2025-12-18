@@ -5,19 +5,50 @@ title: Home
 
 <section class="hero">
   <div class="hero-text">
-    <h1>Hello, I’m Nurlan Yusifov 👋</h1>
-    <p>
-      Aspiring AI Software Engineer with a strong interest in Artificial Intelligence,
-      focused on Machine Learning & Deep Learning and Data Science,
-      turning ideas and data into intelligent, real-world solutions.
+    <span class="intro-label">INTRODUCTION</span>
+
+    <h1>Hello, I’m Nurlan.</h1>
+
+    <p class="hero-highlight">
+      I'm a <strong class="accent">Computer Science student</strong> aspiring to become an
+      <strong class="accent">AI Software Engineer</strong> with a strong focus on
+      <strong class="accent">Machine Learning</strong> and <strong class="accent">Data Science</strong>.
     </p>
+
+    <p class="hero-desc">
+      I enjoy turning data and ideas into intelligent, real-world digital products —
+      from Python tools and ML experiments to simple apps that solve practical problems.
+      On this site, you can explore my projects, skills, and experience.
+    </p>
+
+    <div class="chips">
+      <span class="chip">AI & Machine Learning</span>
+      <span class="chip">Data Science</span>
+      <span class="chip">Python & Swift</span>
+      <span class="chip">iOS Development (Beginner)</span>
+    </div>
+
+    <!-- ICON + TEXT buttons -->
+    <div class="hero-actions">
+      <a class="btn-pill primary" href="{{ '/projects/' | relative_url }}">
+        <span aria-hidden="true"></span>&nbsp; View Projects
+      </a>
+
+      <a class="btn-pill ghost" href="{{ '/contact/' | relative_url }}">
+        <span aria-hidden="true"></span>&nbsp; Contact Me
+      </a>
+    </div>
   </div>
 
-  <div class="hero-photo-wrap">
-    <img
-      src="{{ '/assets/images/profile.jpg' | relative_url }}"
-      alt="Nurlan Yusifov"
-      class="hero-photo"
-    />
+  <div class="hero-right">
+    <div class="hero-blob" aria-hidden="true"></div>
+
+    <div class="hero-photo-wrap">
+      <img
+        src="{{ '/assets/images/profile.jpg' | relative_url }}"
+        alt="Nurlan Yusifov"
+        class="hero-photo"
+      />
+    </div>
   </div>
 </section>
