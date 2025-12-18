@@ -1272,11 +1272,14 @@ html, body {
   margin: 0;
 }
 
+html { scroll-behavior: smooth; }
+
 .snap-container {
   height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 .snap-section {
@@ -1291,6 +1294,7 @@ html, body {
 
 /* ---------- THEME TOKENS ---------- */
 :root{
+  --header-height: 84px; /* used to offset fixed header */
   --bg: #f6f8fc;
   --text: #0b1220;
   --muted: rgba(11,18,32,.75);
@@ -1319,11 +1323,14 @@ body{
 
 /* ---------- NAVBAR (NEW) ---------- */
 .nav{
-  position: sticky;
+  position: fixed;
   top: 12px;
-  z-index: 50;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: calc(100% - 48px);
   max-width: 1180px;
-  margin: 12px auto;
+  margin: 0;
   padding: 10px 14px;
   display:flex;
   align-items:center;
@@ -1343,6 +1350,9 @@ body{
   border-radius:999px;
   background: rgba(255,255,255,.06);
 }
+
+/* keep main content below fixed header */
+main.container{ padding-top: calc(var(--header-height)); }
 
 .nav-link{
   padding:10px 14px;
@@ -1627,6 +1637,36 @@ body{
   padding:12px 18px !important;
   border-radius:999px !important;
   text-decoration:none !important;
+  font-weight:800 !important;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, opacity .12s ease !important;
+}
+/* Primary filled pill */
+.btn-pill.primary{
+  background: var(--accent);
+  color: #fff !important;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 12px 30px rgba(34,197,94,0.12);
+}
+.btn-pill.primary:hover{
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 48px rgba(34,197,94,0.18) !important;
+}
+/* Ghost / outline pill */
+.btn-pill.ghost{
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 1px solid rgba(11,18,32,0.08) !important;
+}
+.btn-pill.ghost:hover{
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06) !important;
+  background: rgba(11,18,32,0.03) !important;
+}
+
+/* Responsive: stack CTAs on small screens */
+@media (max-width: 520px){
+  .hero .hero-actions{ flex-direction: column; gap: 12px; }
+  .btn-pill{ width: 100% !important; justify-content: center !important; }
 }
 /* FINAL FIX: CTA links -> real buttons */
 .hero .hero-actions a{

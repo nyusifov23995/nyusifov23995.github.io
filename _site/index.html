@@ -45,7 +45,9 @@
 
     <!-- MAIN CONTENT -->
     <main class="container" role="main">
-      <section class="hero">
+      <div class="snap-container">
+
+  <section id="home" class="hero snap-section">
   <div class="hero-text">
     <span class="intro-label">INTRODUCTION</span>
 
@@ -72,11 +74,11 @@
 
     <!-- ICON + TEXT buttons -->
     <div class="hero-actions">
-      <a class="btn-pill primary" href="/projects/">
+      <a class="btn-pill primary" href="#projects">
         <span aria-hidden="true"></span>&nbsp; View Projects
       </a>
 
-      <a class="btn-pill ghost" href="/contact/">
+      <a class="btn-pill ghost" href="#contact">
         <span aria-hidden="true"></span>&nbsp; Contact Me
       </a>
     </div>
@@ -92,8 +94,42 @@
         class="hero-photo"
       />
     </div>
-  </div>
-</section>
+    </div>
+  </section>
+
+  <!-- Projects section (anchor target) -->
+  <section id="projects" class="snap-section page-wrap">
+    <div class="page-hero">
+      <h2 class="page-title">Projects</h2>
+      <p class="page-lead">A quick selection of projects — click through to view more.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3 class="card-title">All projects</h3>
+        <p class="card-text">Browse the full projects page for details and links.</p>
+        <p style="margin-top:1rem"><a class="btn-pill primary" href="/projects/">View Projects</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section (anchor target) -->
+  <section id="contact" class="snap-section page-wrap">
+    <div class="page-hero">
+      <h2 class="page-title">Contact</h2>
+      <p class="page-lead">Get in touch — send me a message or use the contact page.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3 class="card-title">Contact</h3>
+        <p class="card-text">Prefer email? <a href="mailto:nurlan.datapath@gmail.com">nurlan.datapath@gmail.com</a></p>
+        <p style="margin-top:1rem"><a class="btn-pill ghost" href="/contact/">Contact Me</a></p>
+      </div>
+    </div>
+  </section>
+
+</div>
 
     </main>
 
