@@ -1725,3 +1725,66 @@ html[data-theme="dark"] .page-wrap .badge{
   border: 1px solid rgba(255,255,255,.14) !important;
   color: rgba(255,255,255,.85) !important;
 }
+/* ========== MOBILE NAV (Hamburger) ========== */
+.nav-toggle{
+  display:none;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: .45rem .7rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.site-nav { position: relative; }
+
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:1.4rem;
+  margin:0;
+  padding:0;
+}
+
+.nav-list a{
+  text-decoration:none;
+  color:#222;
+  font-weight:500;
+}
+
+.nav-list a:hover{ text-decoration: underline; }
+
+/* Mobile behavior */
+@media (max-width: 768px){
+  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center; }
+
+  /* menu hidden by default */
+  .nav-list{
+    display:none;
+    position:absolute;
+    right:0;
+    top: 52px;
+    width: min(260px, 85vw);
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:14px;
+    padding:.6rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,.10);
+    flex-direction:column;
+    gap:.25rem;
+    z-index: 999;
+  }
+
+  .nav-list.show{ display:flex; }
+
+  .nav-list li a{
+    display:block;
+    padding:.75rem .85rem;
+    border-radius:12px;
+  }
+
+  .nav-list li a:hover{
+    background:#f6f7f9;
+    text-decoration:none;
+  }
+}

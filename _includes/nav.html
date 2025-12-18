@@ -1,19 +1,29 @@
-<nav class="nav">
-  <a class="brand" href="{{ '/' | relative_url }}">
-    <span class="avatar" aria-hidden="true">🟢 NY</span>
-    <span class="brand-name">Nurlan Yusifov</span>
-  </a>
+<header class="site-header">
+  <nav class="nav">
+    <!-- Brand -->
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="avatar" aria-hidden="true">🟢 NY</span>
+      <span class="brand-name">Nurlan Yusifov</span>
+    </a>
 
-  <div class="nav-center">
-    <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
-    <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
-    <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
-    <a class="nav-link {% if page.url contains '/skills' %}active{% endif %}" href="{{ '/skills/' | relative_url }}">Skills</a>
-    <a class="nav-link {% if page.url contains '/experience' %}active{% endif %}" href="{{ '/experience/' | relative_url }}">Experience</a>
-    <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" href="{{ '/contact/' | relative_url }}">Contact</a>
-  </div>
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
 
-  <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
-    🌙
-  </button>
-</nav>
+    <!-- Links -->
+    <div class="nav-center nav-list">
+      <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      <a class="nav-link {% if page.url contains '/about' %}active{% endif %}" href="{{ '/about/' | relative_url }}">About</a>
+      <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}" href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a class="nav-link {% if page.url contains '/skills' %}active{% endif %}" href="{{ '/skills/' | relative_url }}">Skills</a>
+      <a class="nav-link {% if page.url contains '/experience' %}active{% endif %}" href="{{ '/experience/' | relative_url }}">Experience</a>
+      <a class="nav-link {% if page.url contains '/contact' %}active{% endif %}" href="{{ '/contact/' | relative_url }}">Contact</a>
+    </div>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+      🌙
+    </button>
+  </nav>
+</header>

@@ -1,15 +1,25 @@
 /* ===============================
-   Mobile nav toggle (optional)
+   Mobile nav toggle
+   (works with: .nav-toggle + .nav-list)
    =============================== */
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".nav-links");
+  const menu = document.querySelector(".nav-list"); // ✅ IMPORTANT
 
-  if (btn && nav) {
-    btn.addEventListener("click", () => {
-      nav.classList.toggle("show");
-    });
-  }
+  if (!btn || !menu) return;
+
+  btn.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("show");
+    btn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // Close menu when user clicks a link (mobile UX)
+  menu.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    menu.classList.remove("show");
+    btn.setAttribute("aria-expanded", "false");
+  });
 });
 
 /* ===============================
@@ -22,9 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const fromEmail = document.getElementById("fromEmail").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const message = document.getElementById("message").value.trim();
+    const fromEmail = document.getElementById("fromEmail")?.value.trim() || "";
+    const subject = document.getElementById("subject")?.value.trim() || "";
+    const message = document.getElementById("message")?.value.trim() || "";
 
     const to = "nurlan.datapath@gmail.com";
 
@@ -40,8 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = mailto;
   });
 });
-// ===== Lightbox =====
-(function () {
+
+/* ===============================
+   Lightbox
+   =============================== */
+(() => {
   const box = document.getElementById("lightbox");
   if (!box) return;
 
@@ -68,14 +81,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = e.target;
     if (!(target instanceof Element)) return;
 
-    // only gallery images
     if (target.matches(".project-gallery img")) {
       openLightbox(target.src, target.alt);
     }
   });
 
-  closeBtn.addEventListener("click", closeLightbox);
-  backdrop.addEventListener("click", closeLightbox);
+  closeBtn?.addEventListener("click", closeLightbox);
+  backdrop?.addEventListener("click", closeLightbox);
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeLightbox();
