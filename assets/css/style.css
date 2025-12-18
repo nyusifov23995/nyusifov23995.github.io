@@ -30,19 +30,7 @@ body {
   --glass-border: 1px solid rgba(15,23,42,0.04);
 }
 
-/* Dark theme */
-:root[data-theme="dark"]{
-  --color-bg: #071025;
-  --color-surface: #0b1020;
-  --color-muted: #9aa6b2;
-  --color-accent: #60a5fa;
-  --color-accent-2: #4fd1c5;
-  --color-text: #e6eef8;
-  --page-bg: radial-gradient(1000px 400px at 10% 10%, rgba(8,145,178,0.12), transparent 20%), linear-gradient(180deg,#020617 0%,#071025 100%);
-  --card-radius: 14px;
-  --card-shadow: 0 10px 30px rgba(2,6,23,0.6);
-  --glass-border: 1px solid rgba(255,255,255,0.04);
-}
+/* Dark theme removed — site uses single light theme */
 
 /* Accessibility: reduce motion disables animations */
 @media (prefers-reduced-motion: reduce){
@@ -81,10 +69,9 @@ body {
 
 .nav-link.active, .nav-links a.is-active, .nav-list a.is-active{ background:var(--color-accent); color:#fff }
 
-/* Theme toggle button */
-.theme-toggle, .nav-toggle{ background:transparent;border:0;padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1.05rem }
-.theme-toggle{ box-shadow:none; transition:transform .18s ease }
-.theme-toggle:hover{ transform:translateY(-2px) }
+/* Mobile nav toggle styles (theme toggle removed) */
+.nav-toggle{ background:transparent;border:0;padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1.05rem; box-shadow:none; transition:transform .18s ease }
+.nav-toggle:hover{ transform:translateY(-2px) }
 
 /* ========== HOME HERO (solda text, sağda şəkil) ========== */
 .hero{ display:flex;align-items:center;justify-content:space-between;gap:2.5rem;padding:4rem 0;}
@@ -205,7 +192,7 @@ body {
   top: 0.2rem;
   bottom: 0.2rem;
   width: 2px;
-  background: #e9e9ee;
+  background: rgba(0,0,0,0.06);
 }
 
 /* Item */
@@ -215,25 +202,13 @@ body {
 }
 
 /* Dot */
-.t-dot {
-  position: absolute;
-  left: 0.62rem;
-  top: 1.15rem;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: #111;
-  outline: 4px solid #fff;
-  box-shadow: 0 0 0 1px #e9e9ee;
+.t-dot{
+  position:absolute;left:0.62rem;top:1.15rem;width:14px;height:14px;border-radius:999px;background:var(--color-accent);outline:4px solid rgba(255,255,255,0.04);box-shadow:0 0 0 1px rgba(0,0,0,0.06);
 }
 
 /* Card */
-.t-card {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 14px;
-  padding: 1.2rem 1.25rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+.t-card{
+  background:var(--color-surface);border:var(--glass-border);border-radius:var(--card-radius);padding:1.2rem 1.25rem;box-shadow:var(--card-shadow);
 }
 
 .t-top {
@@ -1331,17 +1306,7 @@ html, body {
   --navBorder: rgba(11,18,32,.10);
 }
 
-html[data-theme="dark"]{
-  --bg: #07101d;
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --card: rgba(10,16,28,.72);
-  --border: rgba(255,255,255,.10);
-  --shadow: 0 25px 70px rgba(0,0,0,.35);
-
-  --nav: rgba(20,30,45,.55);
-  --navBorder: rgba(255,255,255,.08);
-}
+/* Additional dark-theme variable block removed */
 
 /* ---------- GLOBAL OVERRIDE ---------- */
 body{
@@ -1398,15 +1363,7 @@ body{
   box-shadow: 0 10px 30px rgba(34,197,94,.18);
 }
 
-.theme-toggle{
-  width:40px;
-  height:40px;
-  border-radius:999px;
-  border:1px solid var(--navBorder);
-  background: rgba(255,255,255,.08);
-  color: var(--text);
-  cursor:pointer;
-}
+/* theme-toggle styles removed (no dark mode) */
 
 /* ---------- HERO (NEW CARD STYLE) ---------- */
 .hero{
@@ -1540,7 +1497,8 @@ body{
   box-shadow: 0 18px 55px rgba(0,0,0,.15);
 }
 
-html[data-theme="light"] .card{
+/* Light-theme card adjustments (applied as default single theme) */
+.card{
   border-color: var(--border);
   background: rgba(255,255,255,.60);
 }
@@ -1565,7 +1523,8 @@ html[data-theme="light"] .card{
   color: var(--text);
 }
 
-html[data-theme="light"] .badge{
+/* Light-theme badge adjustments (applied as default single theme) */
+.badge{
   border-color: var(--border);
   background: rgba(255,255,255,.60);
 }
@@ -1603,8 +1562,9 @@ html[data-theme="light"] .badge{
   outline: none;
 }
 
-html[data-theme="light"] .input,
-html[data-theme="light"] .textarea{
+/* Light-theme form input backgrounds (applied as default single theme) */
+.input,
+.textarea{
   border-color: var(--border);
   background: rgba(255,255,255,.75);
 }
@@ -1678,27 +1638,7 @@ html[data-theme="light"] .textarea{
   text-decoration: none !important;
 }
 /* ===== Experience: dark mode readability fix ===== */
-html[data-theme="dark"] .page-wrap .card{
-  background: rgba(255,255,255,.06) !important;
-  border-color: rgba(255,255,255,.12) !important;
-}
-
-html[data-theme="dark"] .page-wrap .card-title{
-  color: rgba(255,255,255,.92) !important;
-}
-
-html[data-theme="dark"] .page-wrap .card-text,
-html[data-theme="dark"] .page-wrap .page-lead{
-  color: rgba(255,255,255,.72) !important;
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-html[data-theme="dark"] .page-wrap .badge{
-  background: rgba(255,255,255,.08) !important;
-  border: 1px solid rgba(255,255,255,.14) !important;
-  color: rgba(255,255,255,.85) !important;
-}
+/* Removed dark-mode specific overrides for page-wrap (not needed for single light theme) */
 /* ========== MOBILE NAV (Hamburger) ========== */
 .nav-toggle{
   display:none;
