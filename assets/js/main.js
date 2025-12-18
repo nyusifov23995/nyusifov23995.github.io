@@ -129,7 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
     i = Math.max(0, Math.min(sections.length - 1, i));
     const target = sections[i];
     if (!target) return;
-    const top = target.offsetTop;
+    // account for the fixed header so target sits below the nav
+    const rootStyles = getComputedStyle(document.documentElement);
+    const headerHeight = parseInt(rootStyles.getPropertyValue('--header-height')) || 0;
+    const top = target.offsetTop - headerHeight - 12; // small extra offset for breathing room
     isAnimating = true;
     container.scrollTo({ top, behavior: 'smooth' });
     setTimeout(()=>{ isAnimating = false; }, 700);

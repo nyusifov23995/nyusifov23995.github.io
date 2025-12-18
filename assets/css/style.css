@@ -1155,8 +1155,9 @@ body {
   left: 50%;
   width: 3px;
   transform: translateX(-50%);
-  background: rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.06);
   border-radius: 999px;
+  z-index: 0;
 }
 
 .zz-item{
@@ -1174,6 +1175,8 @@ body {
   border-radius: 18px;
   padding: 1.15rem 1.2rem;
   box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  position: relative;
+  z-index: 2; /* ensure cards sit above the timeline line */
 }
 
 /* place left/right */
@@ -1192,6 +1195,7 @@ body {
   background: #fff;
   border: 4px solid rgba(0,0,0,0.30);
   box-shadow: 0 0 0 6px rgba(255,255,255,0.95);
+  z-index: 3; /* dot sits above cards' edge */
 }
 
 /* inside card */
@@ -1258,6 +1262,7 @@ body {
 
   .zz-card{
     width: 100%;
+    z-index: 2;
   }
 
   .zz-item.left  .zz-card,
@@ -1283,9 +1288,15 @@ html { scroll-behavior: smooth; }
 }
 
 .snap-section {
-  height: 100vh;
+  /* allow sections to grow if their content is taller than the viewport
+     (prevents timeline/content overlapping). Use min-height so short
+     sections still fill the screen while taller sections expand naturally) */
+  min-height: calc(100vh - var(--header-height));
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   box-sizing: border-box;
+  padding: 40px 0; /* breathing room around content */
+  overflow: visible;
 }
 /* =====================================================
    NEW DESIGN SYSTEM (OVERRIDES OLD CSS)
