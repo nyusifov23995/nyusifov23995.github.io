@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      Experience – My Personal Website
+    </title>
+
+    <meta name="description" content="Personal website built with Jekyll">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+  <nav class="nav">
+    <!-- Brand -->
+    <a class="brand" href="/">
+      <span class="avatar" aria-hidden="true">🟢 NY</span>
+      <span class="brand-name">Nurlan Yusifov</span>
+    </a>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- Links -->
+    <div class="nav-center nav-list">
+      <a class="nav-link " href="/">Home</a>
+      <a class="nav-link " href="/about/">About</a>
+      <a class="nav-link " href="/projects/">Projects</a>
+      <a class="nav-link " href="/skills/">Skills</a>
+      <a class="nav-link active" href="/experience/">Experience</a>
+      <a class="nav-link " href="/contact/">Contact</a>
+    </div>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+      🌙
+    </button>
+  </nav>
+</header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container" role="main">
+      <section class="page-wrap">
+  <header class="page-hero">
+    <h1 class="page-title">My Experience</h1>
+    <p class="page-lead">
+      Hands-on IT support, hackathon delivery, and AI engineering exposure in real-world environments.
+    </p>
+  </header>
+
+  <section class="cards" aria-label="Experience cards">
+
+    <article class="card">
+      <div class="card-top">
+        <h2 class="card-title">🖥️ IT Support Intern — Birbank</h2>
+        <span class="badge">Summer (1st year)</span>
+      </div>
+
+      <p class="card-text">
+        During the summer of my first year, I worked as an IT Support Intern at Birbank, gaining hands-on experience in a professional IT environment.
+        I supported users by troubleshooting hardware and software issues, assisting with system and connectivity problems, and providing on-site IT support.
+      </p>
+
+      <p class="card-text">
+        This role strengthened my problem-solving skills, technical confidence, and my ability to communicate solutions clearly,
+        while helping me better understand real-world IT workflows.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h2 class="card-title">🏆 FinTech Hackathon — Tenity &amp; IDDA</h2>
+        <span class="badge">Nov 14–16</span>
+      </div>
+
+      <p class="card-text">
+        From November 14 to 16, I participated in the FinTech Hackathon organized by Tenity in collaboration with the Innovation and Digital Development Agency (IDDA).
+        Together with my team <strong>BANM ADA Fusion</strong>, we developed <strong>BofiAI</strong>, an AI-powered financial assistant that helps users improve spending habits,
+        plan purchases, and predict future financial risks using secure Open Banking data.
+      </p>
+
+      <p class="card-text">
+        Our project was selected among the <strong>Top 16 finalists out of 56 teams</strong>, highlighting its innovation and real-world potential.
+        This experience strengthened my teamwork, problem-solving, and creative thinking skills.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-top">
+        <h2 class="card-title">🤖 AI Engineering Experience — Mega Sec MMC</h2>
+        <span class="badge">1 week</span>
+      </div>
+
+      <p class="card-text">
+        I completed a one-week hands-on experience at Mega Sec MMC, working closely with experienced AI Engineers in a professional setting.
+        During this period, I was exposed to real-world AI development workflows and participated in practical tasks related to the design and application of AI-based solutions.
+      </p>
+
+      <p class="card-text">
+        This experience provided valuable insight into industry applications of AI technologies and further strengthened my interest in building practical,
+        data-driven, real-world systems.
+      </p>
+    </article>
+
+  </section>
+</section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+  <div class="footer-container">
+    <p class="footer-copy">© 2025 My Personal Website. All rights reserved.</p>
+
+    <a class="footer-link" href="https://github.com/nyusifov23995/nyusifov23995.github.io" target="_blank" rel="noopener">
+      <i class="fa-brands fa-github" aria-hidden="true"></i>
+      <span>GitHub Repository</span>
+    </a>
+  </div>
+</footer>
+
+
+    <!-- LIGHTBOX (leave as is) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="Close">✕</button>
+      <div class="lightbox-backdrop"></div>
+      <img class="lightbox-img" alt="">
+    </div>
+
+    <!-- MAIN JS -->
+    <script src="/assets/js/main.js"></script>
+
+    <!-- DARK / LIGHT MODE TOGGLE -->
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const saved = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        const initial = saved || (prefersDark ? "dark" : "light");
+        root.setAttribute("data-theme", initial);
+
+        function updateIcon(btn, theme) {
+          if (!btn) return;
+          btn.textContent = theme === "dark" ? "☀️" : "🌙";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const btn = document.querySelector("[data-theme-toggle]");
+          updateIcon(btn, root.getAttribute("data-theme"));
+
+          if (btn) {
+            btn.addEventListener("click", () => {
+              const current = root.getAttribute("data-theme");
+              const next = current === "dark" ? "light" : "dark";
+              root.setAttribute("data-theme", next);
+              localStorage.setItem("theme", next);
+              updateIcon(btn, next);
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

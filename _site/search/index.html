@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>
+      Search – My Personal Website
+    </title>
+
+    <meta name="description" content="Personal website built with Jekyll">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+  <nav class="nav">
+    <!-- Brand -->
+    <a class="brand" href="/">
+      <span class="avatar" aria-hidden="true">🟢 NY</span>
+      <span class="brand-name">Nurlan Yusifov</span>
+    </a>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
+
+    <!-- Links -->
+    <div class="nav-center nav-list">
+      <a class="nav-link " href="/">Home</a>
+      <a class="nav-link " href="/about/">About</a>
+      <a class="nav-link " href="/projects/">Projects</a>
+      <a class="nav-link " href="/skills/">Skills</a>
+      <a class="nav-link " href="/experience/">Experience</a>
+      <a class="nav-link " href="/contact/">Contact</a>
+    </div>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
+      🌙
+    </button>
+  </nav>
+</header>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container" role="main">
+      <section class="search-page">
+  <header class="search-head">
+    <h1>Search</h1>
+    <p>Type a keyword (e.g., about, projects, skills, experience, contact).</p>
+  </header>
+
+  <div id="searchResults" class="search-results"></div>
+</section>
+
+<script>
+  const pages = [
+    { title: "Home", url: "/", keywords: ["home", "main", "start"] },
+    { title: "About", url: "/about", keywords: ["about", "education", "eapp", "ada"] },
+    { title: "Projects", url: "/projects", keywords: ["projects", "project", "portfolio"] },
+    { title: "Skills", url: "/skills", keywords: ["skills", "python", "git", "ml", "ai", "ds"] },
+    { title: "Experience", url: "/experience", keywords: ["experience", "intern", "birbank", "tenity", "idda", "mega"] },
+    { title: "Contact", url: "/contact", keywords: ["contact", "email", "phone", "whatsapp", "linkedin", "github"] },
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const q = (params.get("q") || "").trim().toLowerCase();
+
+  const box = document.getElementById("searchResults");
+
+  if (!q) {
+    box.innerHTML = "<p>Please enter a search term in the top bar.</p>";
+  } else {
+    const hits = pages.filter(p =>
+      p.title.toLowerCase().includes(q) || p.keywords.some(k => k.includes(q))
+    );
+
+    if (hits.length === 1) {
+      // 1 nəticədirsə birbaşa ora aparır
+      window.location.href = hits[0].url;
+    } else if (hits.length > 1) {
+      box.innerHTML = hits.map(h => `<p><a href="${h.url}">${h.title}</a></p>`).join("");
+    } else {
+      box.innerHTML = `<p>No results for "<strong>${q}</strong>". Try: about, projects, skills, experience, contact.</p>`;
+    }
+  }
+</script>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+  <div class="footer-container">
+    <p class="footer-copy">© 2025 My Personal Website. All rights reserved.</p>
+
+    <a class="footer-link" href="https://github.com/nyusifov23995/nyusifov23995.github.io" target="_blank" rel="noopener">
+      <i class="fa-brands fa-github" aria-hidden="true"></i>
+      <span>GitHub Repository</span>
+    </a>
+  </div>
+</footer>
+
+
+    <!-- LIGHTBOX (leave as is) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="Close">✕</button>
+      <div class="lightbox-backdrop"></div>
+      <img class="lightbox-img" alt="">
+    </div>
+
+    <!-- MAIN JS -->
+    <script src="/assets/js/main.js"></script>
+
+    <!-- DARK / LIGHT MODE TOGGLE -->
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const saved = localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        const initial = saved || (prefersDark ? "dark" : "light");
+        root.setAttribute("data-theme", initial);
+
+        function updateIcon(btn, theme) {
+          if (!btn) return;
+          btn.textContent = theme === "dark" ? "☀️" : "🌙";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          const btn = document.querySelector("[data-theme-toggle]");
+          updateIcon(btn, root.getAttribute("data-theme"));
+
+          if (btn) {
+            btn.addEventListener("click", () => {
+              const current = root.getAttribute("data-theme");
+              const next = current === "dark" ? "light" : "dark";
+              root.setAttribute("data-theme", next);
+              localStorage.setItem("theme", next);
+              updateIcon(btn, next);
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
