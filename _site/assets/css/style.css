@@ -30,7 +30,19 @@ body {
   --glass-border: 1px solid rgba(15,23,42,0.04);
 }
 
-/* Dark theme removed — site uses single light theme */
+/* Dark theme tokens - high contrast */
+[data-theme="dark"] {
+  --color-bg: #0a0e1a;
+  --color-surface: #141829;
+  --color-muted: #d1d5db;
+  --color-accent: #60a5fa;
+  --color-accent-2: #22d3ee;
+  --color-text: #f5f7fa;
+  --page-bg: linear-gradient(180deg, #0a0e1a 0%, #0f1420 100%);
+  --card-radius: 14px;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  --glass-border: 1px solid rgba(255,255,255,0.1);
+}
 
 /* Accessibility: reduce motion disables animations */
 @media (prefers-reduced-motion: reduce){
@@ -69,9 +81,29 @@ body {
 
 .nav-link.active, .nav-links a.is-active, .nav-list a.is-active{ background:var(--color-accent); color:#fff }
 
-/* Mobile nav toggle styles (theme toggle removed) */
+/* Mobile nav toggle styles */
 .nav-toggle{ background:transparent;border:0;padding:.4rem .6rem;border-radius:8px;cursor:pointer;font-size:1.05rem; box-shadow:none; transition:transform .18s ease }
 .nav-toggle:hover{ transform:translateY(-2px) }
+
+/* Theme toggle button */
+.theme-toggle{
+  background: transparent;
+  border: 1px solid var(--color-text);
+  opacity: 0.6;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover{
+  transform: translateY(-2px);
+  opacity: 1;
+}
 
 /* ========== HOME HERO (solda text, sağda şəkil) ========== */
 .hero{ display:flex;align-items:center;justify-content:space-between;gap:2.5rem;padding:4rem 0;}
@@ -1304,7 +1336,7 @@ html { scroll-behavior: smooth; }
 /* ==============================
    Card / Block border system
    - unified subtle gradient border for a premium look
-   - adapts to light/dark via prefers-color-scheme
+   - adapts to light/dark via data-theme
    ============================== */
 :root{
   --card-border-start: rgba(37,99,235,0.14);
@@ -1316,15 +1348,13 @@ html { scroll-behavior: smooth; }
   --card-elev-shadow: 0 12px 30px rgba(11,18,32,0.06);
 }
 
-@media (prefers-color-scheme: dark){
-  :root{
-    --card-border-start: rgba(124,197,255,0.12);
-    --card-border-end: rgba(59,224,196,0.06);
-    --card-inner-light: rgba(255,255,255,0.03);
-    --card-inner-dark: rgba(8,12,20,0.72);
-    --card-hover-shadow: 0 20px 60px rgba(124,197,255,0.04);
-    --card-elev-shadow: 0 18px 50px rgba(2,6,23,0.18);
-  }
+[data-theme="dark"]{
+  --card-border-start: rgba(124,197,255,0.15);
+  --card-border-end: rgba(59,224,196,0.08);
+  --card-inner-light: rgba(20,24,41,0.9);
+  --card-inner-dark: rgba(10,16,28,0.8);
+  --card-hover-shadow: 0 20px 60px rgba(124,197,255,0.1);
+  --card-elev-shadow: 0 18px 50px rgba(0,0,0,0.5);
 }
 
 /* Apply the premium border & subtle hover to most blocks/cards */
@@ -1359,23 +1389,6 @@ html { scroll-behavior: smooth; }
   transform: translateY(-4px);
   box-shadow: var(--card-hover-shadow);
 }
-
-/* Ensure inner backgrounds for dark contexts look proper */
-@media (prefers-color-scheme: dark){
-  .card,
-  .contact-card,
-  .stat-card,
-  .zz-card,
-  .t-card,
-  .skill-card,
-  .chip,
-  .project-card{
-    background-image: linear-gradient(var(--card-inner-light), var(--card-inner-light)), linear-gradient(90deg, var(--card-border-start), var(--card-border-end));
-  }
-}
-
-
-/* Additional dark-theme variable block removed */
 
 /* ---------- GLOBAL OVERRIDE ---------- */
 body{

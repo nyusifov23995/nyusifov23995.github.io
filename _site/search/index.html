@@ -38,7 +38,10 @@
       <a class="nav-link " href="/contact/">Contact</a>
     </div>
 
-    <!-- Theme toggle removed (single light theme) -->
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="theme-icon">🌙</span>
+    </button>
   </nav>
 </header>
 
@@ -112,6 +115,38 @@
     <!-- MAIN JS -->
     <script src="/assets/js/main.js"></script>
 
-    <!-- Theme toggle removed: site uses single (light) theme -->
+    <!-- Theme toggle script -->
+    <script>
+      (function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Get saved theme preference or use system preference
+        const savedTheme = localStorage.getItem('theme-preference');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        
+        // Set initial theme
+        html.setAttribute('data-theme', initialTheme);
+        if (initialTheme === 'dark') {
+          themeToggle.textContent = '☀️';
+        } else {
+          themeToggle.textContent = '🌙';
+        }
+        
+        // Theme toggle handler
+        themeToggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme');
+          const newTheme = current === 'dark' ? 'light' : 'dark';
+          
+          html.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme-preference', newTheme);
+          
+          // Update icon
+          themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+      })();
+    </script>
   </body>
 </html>
