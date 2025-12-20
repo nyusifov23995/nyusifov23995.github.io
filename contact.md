@@ -1,6 +1,7 @@
 ---
 title: "Contact"
 layout: default
+permalink: /contact/
 ---
 
 <section class="contact-wrap">
